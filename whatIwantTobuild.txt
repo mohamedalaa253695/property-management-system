@@ -1,0 +1,37 @@
+* property management system
+
+1- Complex
+2- Buildings
+3- Floors
+4- Flats Or Units
+
+
+
+Selling : sell a unit to customer
+
+Rent : rent a unit to a customer --> will calculate the installments
+
+Purchase : # have a second look  http://demo.erealestate.eaccount.xyz/
+
+Vendor : service provider to the units --> maintenance provider
+
+Employee : listing the Employees 
+
+Ledger : includes credit and debit to see the overall profit or loss.الموازنة 
+
+Bank Cash : 
+
+Voucher / Invoice :  
+
+Reports : 
+
+
+Users :
+
+
+Role management: Role matrix show -- create -- Edit -- delete -- trash show -- restore -- permanently delete
+
+Settings : 
+
+username::mohamedalaa253694@yahoo.com
+password::password
