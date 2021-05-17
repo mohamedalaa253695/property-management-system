@@ -6,7 +6,13 @@
     @section('content')
 
     <title>Users in Admin area</title>
-    <button>create</button>
+    <a href="{{route('users.create')}}"><button>create</button></a>
+    @if(Session::has('message'))
+    <div class="alert alert-success">
+        <li>{{Session::get('message')}}</li>
+    </div>
+
+    @endif
 
     <table>
         <tr>
@@ -22,8 +28,8 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td> 
-                    <button value="delete"></button>
-                    <button value="edit"></button>
+                    <button value="delete">delete</button>
+                    <button value="edit"> edit</button>
                 </td>
             </tr>
             @endforeach
