@@ -46,9 +46,9 @@ class UserController extends Controller
     {
         //
         //dd($request->username);
-
+        
         $check = $request->validate([
-            'username'=>'required|alpha_num',
+            'username'=>'required|alpha_spaces',
             'email'=>'required|email:rfc,dns',
             'password'=> 'required|min:8'
         ]);
@@ -85,6 +85,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
+        $user = User::find($id); 
+        return view('users.admin.edit',['user'=>$user]);
     }
 
     /**
@@ -97,6 +99,21 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $check = $request->validate([
+            'username'=>'required|alpha_spaces',
+            'email'=>'required|email:rfc,dns',
+           
+        ]);
+
+        $user = User::find($id);
+        $user->name =  $request->username;
+        $user->email = $request->email;
+        // $user->password = $request->password;
+        $user->save();
+
+        return  redirect('/users')->with('message','user updated successfully');
+
+
     }
 
     /**
@@ -108,5 +125,15 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+        //dd('deleted');
+        $user= User::find($id);
+        $user->delete();
+
+        return redirect('/users')->with('message','User deleted successfully');
+
+
+
+        
+
     }
 }
