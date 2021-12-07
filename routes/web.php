@@ -29,13 +29,50 @@ Auth::routes();
 Route::group(['middleware'=>'auth'] ,function(){
     
     Route::get('/home',[HomeController::class,'index'])->name('home');
-    Route::get('/users',[UserController::class,'index'])->name('users');
-    Route::get('/users/create',[UserController::class,'create'])->name('users.create');
-    Route::post('/users',[UserController::class,'store'])->name('users.store');
-    Route::get('/users/{user}',[UserController::class,'show'])->name('users.show');
-    Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('users.edit');
-    Route::post('/users/{user}',[UserController::class,'update'])->name('users.update');
-    Route::delete('/users/{user}',[UserController::class,'destroy'])->name('users.destroy');
+
+    Route::prefix('users')->group(function(){
+        Route::get('/',[UserController::class,'index'])->name('users');
+        Route::get('/create',[UserController::class,'create'])->name('users.create');
+        Route::post('/',[UserController::class,'store'])->name('users.store');
+        Route::get('/{user}',[UserController::class,'show'])->name('users.show');
+        Route::get('/{user}/edit',[UserController::class,'edit'])->name('users.edit');
+        Route::post('/{user}',[UserController::class,'update'])->name('users.update');
+        Route::delete('/{user}',[UserController::class,'destroy'])->name('users.destroy');
+
+    });
+
+    Route::prefix('properties')->group(function(){
+        Route::get('/',[PropertyController::class,'index'])->name('properties');
+        Route::get('/create',[PropertyController::class,'create'])->name('property.create');
+        Route::post('/',[PropertyController::class,'store'])->name('property.store');
+        Route::get('/{property}',[PropertyController::class,'show'])->name('property.show');
+        Route::get('/{property}/edit',[PropertyController::class,'edit'])->name('property.edit');
+        Route::post('/{property}',[PropertyController::class,'update'])->name('property.update');
+        Route::delete('/{property}',[PropertyController::class,'destroy'])->name('property.destroy');
+
+    });
+
+    Route::prefix('cities')->group(function(){
+        Route::get('/',[CityController::class,'index'])->name('cities');
+        Route::get('/create',[CityController::class,'create'])->name('city.create');
+        Route::post('/',[CityController::class,'store'])->name('city.store');
+        Route::get('/{city}',[CityController::class,'show'])->name('city.show');
+        Route::get('/{city}/edit',[CityController::class,'edit'])->name('city.edit');
+        Route::post('/{city}',[CityController::class,'update'])->name('city.update');
+        Route::delete('/{city}',[CityController::class,'destroy'])->name('city.destroy');
+
+    });
+
+    Route::prefix('complexes')->group(function(){
+        Route::get('/',[ComplexController::class,'index'])->name('complexes');
+        Route::get('/create',[ComplexController::class,'create'])->name('complex.create');
+        Route::post('/',[ComplexController::class,'store'])->name('complex.store');
+        Route::get('/{complex}',[ComplexController::class,'show'])->name('complex.show');
+        Route::get('/{complex}/edit',[ComplexController::class,'edit'])->name('complex.edit');
+        Route::post('/{complex}',[ComplexController::class,'update'])->name('complex.update');
+        Route::delete('/{complex}',[ComplexController::class,'destroy'])->name('complex.destroy');
+
+    });
 });
  
 
