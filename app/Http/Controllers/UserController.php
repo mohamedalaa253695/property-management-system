@@ -42,24 +42,25 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     
     public function store(Request $request)
     {
         //
         //dd($request->username);
         
-        $check = $request->validate([
-            'username'=>'required|alpha_spaces',
-            'email'=>'required|email:rfc,dns',
-            'password'=> 'required|min:8'
-        ]);
+        // $check = $request->validate([
+        //     'username'=>'required|alpha_spaces',
+        //     'email'=>'required|email:rfc,dns',
+        //     'password'=> 'required|min:8'
+        // ]);
        
-
+       
          
         $user = new User();
         $user->name = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-
         $user->save();
         //dd($user);
         return redirect('/users')->with('message','User Created successfully');

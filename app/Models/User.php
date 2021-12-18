@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -44,5 +46,7 @@ class User extends Authenticatable
     ];
 
     protected $dates = ['deleted_at'];
+
+    protected $guarded = [] ;
 
 }
