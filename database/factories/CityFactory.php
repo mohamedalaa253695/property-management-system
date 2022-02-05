@@ -1,7 +1,7 @@
 <?php
-
 namespace Database\Factories;
 
+use App\Models\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CityFactory extends Factory
@@ -14,7 +14,10 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'id' => 1,
+            'name' => $this->faker->city(),
+            'country_id' => Country::factory()
+
         ];
     }
 }

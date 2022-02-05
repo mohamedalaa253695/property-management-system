@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,12 +8,15 @@ class City extends Model
 {
     use HasFactory;
 
-    protected $filable =[
+    protected $fillable = [
         'name',
-        'location'
+        'country_id'
     ];
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 
- protected $dates = ['deleted_at'];
-
+    protected $dates = ['deleted_at'];
 }

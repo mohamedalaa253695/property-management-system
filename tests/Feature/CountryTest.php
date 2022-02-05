@@ -1,17 +1,15 @@
 <?php
-
 namespace Tests\Feature;
 
 use App\Models\Country;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Database\Factories\CountryFactory;
-use Illuminate\Http\Client\Request;
 use Tests\TestCase;
 
 class CountryTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
+
     /**
      * A basic feature test example.
      *
@@ -39,15 +37,12 @@ class CountryTest extends TestCase
 
         ];
 
-
         $response = $this->post('countries/store', $attributes)->assertRedirect('/countries');
-
 
         $this->assertDatabaseHas('countries', $attributes);
 
         $this->get('countries')->assertSee($attributes['country_name']);
     }
-
 
     public function test_a_country_requires_a_name()
     {
@@ -56,9 +51,8 @@ class CountryTest extends TestCase
         $attributes = Country::factory()->raw(['country_name' => '']);
 
         $response = $this->post('/countries/store', $attributes)->assertSessionHasErrors('country_name');
-        $response->dumpSession();
+        // $response->dumpSession();
     }
-
 
     public function test_a_user_can_edit_a_country()
     {
@@ -69,15 +63,14 @@ class CountryTest extends TestCase
             ->assertSee($country->country_name);
     }
 
-
-
     public function test_user_can_delete_country()
     {
-        $this->withoutMiddleware();
         $this->withoutExceptionHandling();
-        $country = Country::factory()->make();
-        $this->delete('countries/destroy/' . $country->id)->assertRedirect('/countries');
+        $this->withoutMiddleware();
+        $country_attributes = Country::factory()->create()->getAttributes();
 
-        $this->assertDatabaseMissing('countries', (array)$country);
+        $this->delete('countries/destroy/' . $country_attributes['id'])->assertRedirect('/countries');
+
+        $this->assertDeleted('countries', $country_attributes);
     }
 }

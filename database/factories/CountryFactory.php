@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -15,17 +14,7 @@ class CountryFactory extends Factory
     {
         return [
             //
-            'country_name'=> $this->faker->country
+            'country_name' => $this->faker->country()
         ];
     }
-
-
-
-
-
-
-
-
 }
-
-

@@ -1,30 +1,53 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
-@section('content')
-@if(isset($errors))
-    @if($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-        
+@section('main')
+ 
+ <div class="content-wrapper ">
+    <div class="row justify-content-center ">
+    
+        <div class="col-md-8 grid-margin stretch-card ">
+            <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Country</h4>
+                @if(isset($errors))
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                            @endforeach
+                        </ul>
+                        
+                    </div>
+                    @endif
+                @endif
+                <form class="forms-sample" method="POST" action="{{route('user.store')}}">
+                @csrf
+                <div class="form-group">
+                    <label for="userName">username</label>
+                    <input type="text"  class="form-control" name="username" placeholder="username" required>
+
+                </div>
+                <div class="form-group">
+                    <label for="userName">email*</label>
+                    <input type="text" class="form-control"  name="email" placeholder="email" required>
+
+
+                </div>
+                <div class="form-group">
+                    <label for="userName">password</label>
+                    <input type="text" class="form-control" name="password" placeholder="password" required>
+                </div>
+               
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    
     </div>
-    @endif
-@endif
-<form method="post" action="{{route('users.store')}}">
-@csrf
-<label for="username">username*</label>
-<input type="text" name="username" placeholder="username" required>
+ 
+ </div>
 
-<label for="email">email*</label>
-<input type="text" name="email" placeholder="email" required>
 
-<label for="password">password*</label>
-<input type="text" name="password" placeholder="password" required>
-<input type="submit" >
-
-</form>
-
-@endsection
+@endsection 

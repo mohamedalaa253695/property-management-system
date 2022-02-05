@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -7,8 +6,6 @@ use App\Models\Country;
 
 class CountryController extends Controller
 {
-
-    
     /**
      * Display a listing of the resource.
      *
@@ -41,10 +38,10 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes = request()->validate(['country_name' => 'required' ]);
+        $attributes = request()->validate(['country_name' => 'required']);
 
         Country::create($attributes);
-       
+
         return redirect('/countries')->with('message', 'Country created successfully');
     }
 
@@ -57,7 +54,7 @@ class CountryController extends Controller
     // public function show($id)
     // {
     //     //
-       
+
     // }
 
     /**
@@ -70,7 +67,7 @@ class CountryController extends Controller
     {
         //
         $country = Country::find($id);
-        return view('admin.countries.edit', ['country'=> $country ]);
+        return view('admin.countries.edit', ['country' => $country]);
     }
 
     /**
@@ -83,14 +80,14 @@ class CountryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $attributes = request()->validate(['country_name' => 'required' ]);
+        $attributes = request()->validate(['country_name' => 'required']);
 
         $country = Country::find($id);
 
         $country->country_name = $request->country_name;
 
         $country->save();
-       
+
         return redirect('/countries')->with('message', 'Country updated successfully');
     }
 
@@ -103,7 +100,7 @@ class CountryController extends Controller
     public function destroy($id)
     {
         //
-        $country=Country::find($id);
+        $country = Country::find($id);
         $country->delete();
         return redirect('/countries')->with('message', 'Countyr deleted successfully');
     }

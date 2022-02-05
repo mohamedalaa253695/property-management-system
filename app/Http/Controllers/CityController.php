@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -15,6 +15,8 @@ class CityController extends Controller
     public function index()
     {
         //
+        $cities = City::all();
+        return view('admin.cities.index', ['cities' => $cities]) ;
     }
 
     /**
@@ -24,7 +26,9 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        $countries = Country::all()->collect();
+        // dd($countries);
+        return view('admin.cities.create', ['countries' => $countries]);
     }
 
     /**
@@ -33,9 +37,18 @@ class CityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(City $city)
     {
-        //
+        request()->validate([
+            'name' => 'required',
+        ]);
+
+        City::create([
+            'name' => request()->input('name'),
+            'country_id' => request()->input('country_id')
+        ]);
+        // dd('created');
+        return redirect('/cities');
     }
 
     /**
@@ -57,7 +70,9 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        //
+        $city = City::find($city->id);
+        $countries = Country::all();
+        return view('admin.cities.edit', ['city' => $city, 'countries' => $countries]);
     }
 
     /**
@@ -69,7 +84,13 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        //
+        $city = City::find($city->id);
+        // dd($city, $request->all());
+        $city->update([
+            'name' => $request->input('name'),
+            'country_id' => $request->input('country_id')
+        ]);
+        return redirect('/cities');
     }
 
     /**
@@ -80,6 +101,7 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        City::destroy($city->id);
+        return redirect('/cities');
     }
 }

@@ -1,41 +1,45 @@
-@extends('layouts.app')
 
-@section('content')
+@extends('layouts.admin')
 
-<h1>edit user </h1>
-
-
-@if($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach($errors->all() as $error)
-            <li>{{$error}}</li>
-        @endforeach
-    </ul>
-
-</div>
-
-@endif
-<form method="post" action="{{route('users.update',$user->id)}}">
-    @csrf
-    <div class="row">
-        <label for="username">username*</label>
-        <input type="text" name="username" placeholder="username" value ="{{$user->name}}" >
-
-        <label for="email">email*</label>
-        <input type="text" name="email" value="{{$user->email}}" >
-    </div>
+@section('main')
+ 
+ <div class="content-wrapper ">
+    <div class="row justify-content-center ">
     
-    {{-- <label for="password">password*</label>
-    <input type="text" name="password" value="{{$user->password}}" >
-    <a href="#">
-        <button>generate</button>
-        TODO ==> generate strong password
-    </a>
-    --}}
-    <div class="row">
-        <input type="submit" value='Update'>
-    </div>
-</form>
+        <div class="col-md-8 grid-margin stretch-card ">
+            <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Country</h4>
+                <!-- <p class="card-description">
+                Basic form layout
+                </p> -->
+                @if(isset($errors))
+                
+                    @foreach($errors as $error)
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @endforeach
+                @endif
+                <form class="forms-sample" method="post" action="{{route('user.update',$user->id)}}">
+                @csrf
+                <div class="form-group">
+                <label for="username">username*</label>
+                    <input type="text" class="form-control" name="username" placeholder="username" value ="{{$user->name}}">
+                </div>
+                <div class="form-group">
+                <label for="email">email*</label>
+                    <input type="text" class="form-control" type="text" name="email" value="{{$user->email}}">
+                </div>
 
-@endsection
+
+                <button type="submit" class="btn btn-primary me-2" value="Update">Submit</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    
+    </div>
+ 
+ </div>
+
+
+@endsection 

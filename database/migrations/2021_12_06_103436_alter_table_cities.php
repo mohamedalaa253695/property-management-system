@@ -15,9 +15,7 @@ class AlterTableCities extends Migration
     {
         //
         Schema::table('cities', function (Blueprint $table) {
-            $table->foreign('country_id')->references('id')->on('countries');
-
-
+            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
         });
     }
 

@@ -1,11 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
 
 class UserController extends Controller
 {
@@ -19,8 +17,7 @@ class UserController extends Controller
         //
         $users = User::get();
         //dd($users);
-        return view('users.admin.index',["users"=>$users]);
-
+        return view('users.admin.index', ['users' => $users]);
     }
 
     /**
@@ -42,28 +39,24 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-     
     public function store(Request $request)
     {
         //
         //dd($request->username);
-        
+
         // $check = $request->validate([
         //     'username'=>'required|alpha_spaces',
         //     'email'=>'required|email:rfc,dns',
         //     'password'=> 'required|min:8'
         // ]);
-       
-       
-         
+
         $user = new User();
         $user->name = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
         //dd($user);
-        return redirect('/users')->with('message','User Created successfully');
+        return redirect('/users')->with('message', 'User Created successfully');
     }
 
     /**
@@ -86,8 +79,8 @@ class UserController extends Controller
     public function edit($id)
     {
         //
-        $user = User::find($id); 
-        return view('users.admin.edit',['user'=>$user]);
+        $user = User::find($id);
+        return view('users.admin.edit', ['user' => $user]);
     }
 
     /**
@@ -99,22 +92,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $check = $request->validate([
-            'username'=>'required|alpha_spaces',
-            'email'=>'required|email:rfc,dns',
-           
+        $request->validate([
+            'username' => 'required|alpha_spaces',
+            'email' => 'required|email',
+
         ]);
 
         $user = User::find($id);
-        $user->name =  $request->username;
+
+        $user->name = $request->username;
         $user->email = $request->email;
-        // $user->password = $request->password;
+        $user->password = $user->password;
         $user->save();
 
-        return  redirect('/users')->with('message','user updated successfully');
-
-
+        return  redirect('/users')->with('message', 'user updated successfully');
     }
 
     /**
@@ -127,14 +118,9 @@ class UserController extends Controller
     {
         //
         //dd('deleted');
-        $user= User::find($id);
+        $user = User::find($id);
         $user->delete();
 
-        return redirect('/users')->with('message','User deleted successfully');
-
-
-
-        
-
+        return redirect('/users')->with('message', 'User deleted successfully');
     }
 }
