@@ -22,7 +22,6 @@
                     <tbody>
                         @if (isset($governorates))
                             @foreach ($governorates as $governorate)
-
                                 <tr>
                                     <td>{{ $governorate['name'] }}</td>
                                     <td>
@@ -43,12 +42,12 @@
                                         </div>
                                     </td>
                                 </tr>
-
                             @endforeach
                         @endif
 
                     </tbody>
                 </table>
+                {{ $governorates->onEachSide(1)->links() }}
             </div>
         </div>
     </div>

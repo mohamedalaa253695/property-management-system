@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\Country;
+use App\Models\Governorate;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -27,8 +28,9 @@ class CityController extends Controller
     public function create()
     {
         $countries = Country::all()->collect();
+        $governorates = Governorate::all()->collect();
         // dd($countries);
-        return view('admin.cities.create', ['countries' => $countries]);
+        return view('admin.cities.create', ['countries' => $countries, 'governorates' => $governorates]);
     }
 
     /**
@@ -45,7 +47,8 @@ class CityController extends Controller
 
         City::create([
             'name' => request()->input('name'),
-            'country_id' => request()->input('country_id')
+            'country_id' => request()->input('country_id'),
+            'governorate_id' => request()->input('governorate_id')
         ]);
         // dd('created');
         return redirect('/cities');
@@ -72,7 +75,8 @@ class CityController extends Controller
     {
         $city = City::find($city->id);
         $countries = Country::all();
-        return view('admin.cities.edit', ['city' => $city, 'countries' => $countries]);
+        $governorates = Governorate::all();
+        return view('admin.cities.edit', ['city' => $city, 'countries' => $countries, 'governorates' => $governorates]);
     }
 
     /**
@@ -88,7 +92,8 @@ class CityController extends Controller
         // dd($city, $request->all());
         $city->update([
             'name' => $request->input('name'),
-            'country_id' => $request->input('country_id')
+            // 'country_id' => $request->input('country_id'),
+            'governorate_id' => $request->input('governorate_id')
         ]);
         return redirect('/cities');
     }

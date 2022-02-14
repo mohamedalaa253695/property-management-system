@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('main')
-
     <div class="content-wrapper ">
         <div class="row justify-content-center ">
 
@@ -21,23 +20,13 @@
                                 <label for="country">Country</label>
                                 <select name="country_id" class="form-select">
                                     @foreach ($countries as $country)
-
                                         <option value="{{ $country->id }}"> {{ $country->country_name }}
                                         </option>
                                     @endforeach
 
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <select name="city_id" class="form-select">
-                                    @foreach ($cities as $city)
 
-                                        <option value="{{ $city->id }}"> {{ $city->name }}</option>
-                                    @endforeach
-
-                                </select>
-                            </div>
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
                         </form>
@@ -48,6 +37,4 @@
         </div>
 
     </div>
-
-
 @endsection

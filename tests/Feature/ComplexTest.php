@@ -13,7 +13,7 @@ class ComplexTest extends TestCase
     public function test_authorized_user_can_create_complex()
     {
         $this->withoutExceptionHandling();
-        $attributes = ['name' => 'complex name', 'country_id' => 1, 'city_id' => 1];
+        $attributes = ['name' => 'complex name', 'country_id' => 1, 'city_id' => 1, 'governorate_id' => 1];
         $user = User::factory()->create();
         $response = $this->actingAs($user)->post('/complexes', $attributes)->assertRedirect('/complexes') ;
         $this->get('/complexes')->assertSee($attributes['name']);

@@ -1,16 +1,22 @@
 <?php
 namespace Tests\Feature;
 
+use App\Models\Country;
 use App\Models\Governorate;
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class GovernorateTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_authorized_user_can_create_governorate()
     {
-        $this->withoutExceptionHandling();
-        $attributes = ['name' => 'governorate name', 'country_id' => 1, 'city_id' => 1];
+        // $this->withoutExceptionHandling();
+        $country = Country::factory(1)->create();
+
+        $attributes = ['name' => 'governorate name', 'country_id' => $country->first()->id];
         $user = User::factory()->create();
         $response = $this->actingAs($user)->post('/governorates', $attributes)->assertRedirect('/governorates') ;
         $this->get('/governorates')->assertSee($attributes['name']);
@@ -21,7 +27,7 @@ class GovernorateTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        // $attributes = ['id' => 1, 'name' => 'Changed name', 'country_id' => 1, 'city_id' => 1];
+        // $attributes = ['id' => 1, 'name' => 'Changed name', 'country_id' => 1];
         $governorate = Governorate::factory()->create();
         $governorate->name = 'new Name';
 

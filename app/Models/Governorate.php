@@ -11,7 +11,6 @@ class Governorate extends Model
     protected $fillable = [
         'name',
         'country_id',
-        'city_id'
     ];
 
     public function country()

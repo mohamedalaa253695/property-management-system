@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('main')
-
     <div class="content-wrapper ">
         <div class="row justify-content-center ">
 
@@ -34,17 +33,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="country">city</label>
-                                <select name="city_id" class="form-select">
-                                    <option value="{{ $complex->city->id }}" selected>
-                                        {{ $complex->city->name }}
-                                    </option>
-                                    @foreach ($cities as $city)
-                                        <option value="{{ $city->id }}">{{ $city->name }} </option>
-                                    @endforeach
-                                </select>
-                            </div>
+
 
                             <button type="submit" class="btn btn-primary me-2">Submit</button>
                         </form>
@@ -55,6 +44,4 @@
         </div>
 
     </div>
-
-
 @endsection

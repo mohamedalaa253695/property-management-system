@@ -69,7 +69,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/', [GovernorateController::class, 'store'])->name('governorate.store');
         Route::get('/{governorate}', [GovernorateController::class, 'show'])->name('governorate.show');
         Route::get('/{governorate}/edit', [GovernorateController::class, 'edit'])->name('governorate.edit');
-        Route::post('/{governorate}', [GovernorateController::class, 'update'])->name('governorate.update');
+        Route::patch('/{governorate}', [GovernorateController::class, 'update'])->name('governorate.update');
         Route::delete('/{governorate}', [GovernorateController::class, 'destroy'])->name('governorate.destroy');
     });
 

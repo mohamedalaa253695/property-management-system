@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\City;
 use App\Models\Country;
 use App\Models\Governorate;
 use Illuminate\Http\Request;
@@ -27,8 +26,7 @@ class GovernorateController extends Controller
     public function create()
     {
         $countries = Country::all();
-        $cities = City::all();
-        return view('admin.governorates.create', ['countries' => $countries, 'cities' => $cities]);
+        return view('admin.governorates.create', ['countries' => $countries]);
     }
 
     /**
@@ -42,10 +40,12 @@ class GovernorateController extends Controller
         $request->validate([
             'name' => 'required',
             'country_id' => 'required',
-            'city_id' => 'required',
         ]);
-
-        Governorate::create($request->only('name', 'country_id', 'city_id'));
+        // dd($request->input('name'));
+        Governorate::create([
+            'name' => $request->input('name'),
+            'country_id' => $request->input('country_id')
+        ]);
 
         return redirect('/governorates')->with(['message' => 'country created']);
     }
@@ -71,8 +71,7 @@ class GovernorateController extends Controller
     {
         $governorate = Governorate::find($governorate->id);
         $countries = Country::all();
-        $cities = City::all();
-        return view('admin.governorates.edit', ['governorate' => $governorate, 'cities' => $cities, 'countries' => $countries]);
+        return view('admin.governorates.edit', ['governorate' => $governorate, 'countries' => $countries]);
     }
 
     /**
@@ -87,7 +86,11 @@ class GovernorateController extends Controller
         $governorate = Governorate::find($governorate->id);
 
         // dd($complex);
-        $governorate->update($request->only('name', 'country_id', 'city_id'));
+        $governorate->update($request->only('name', 'country_id'));
+        // $governorate->update([
+        //     'name' => $request->input('name'),
+        //     'country_id' => $request->input('country_id')
+        // ]);
 
         return redirect('/governorates')->with('message', 'governorate updated');
     }

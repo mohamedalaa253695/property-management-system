@@ -17,7 +17,8 @@ class CityTest extends TestCase
 
         $attributes = [
             'name' => 'cairo',
-            'country_id' => 1
+            'country_id' => 1,
+            'governorate_id' => 1
         ];
 
         $this->post('/cities', $attributes)->assertRedirect('/cities');
@@ -33,10 +34,10 @@ class CityTest extends TestCase
         $city = City::factory()->make();
 
         $this->actingAs($user)->post('/cities', $city->toArray())->assertRedirect('/cities');
-
+        // dump($city);
         $city->id = 1;
         $city->name = 'changed';
-        // $city->country_id = 1;
+        $city->country_id = 1;
 
         // dd($city);
         $this->actingAs($user)->post('/cities/' . $city->id, $city->toArray())->assertRedirect('/cities');

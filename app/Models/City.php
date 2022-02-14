@@ -10,7 +10,8 @@ class City extends Model
 
     protected $fillable = [
         'name',
-        'country_id'
+        'country_id',
+        'governorate_id'
     ];
 
     public function country()
