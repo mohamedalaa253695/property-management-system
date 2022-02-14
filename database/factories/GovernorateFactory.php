@@ -2,10 +2,9 @@
 namespace Database\Factories;
 
 use App\Models\Country;
-use App\Models\Governorate;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CityFactory extends Factory
+class GovernorateFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,11 +13,11 @@ class CityFactory extends Factory
      */
     public function definition()
     {
+        $governorates_names = ['cairo', 'Aswan', 'Alexanderia', 'suhag'];
+        $rand_key = array_rand($governorates_names);
         return [
-            'name' => $this->faker->city(),
+            'name' => $governorates_names[$rand_key],
             'country_id' => Country::factory(),
-            'governorate_id' => Governorate::factory()
-
         ];
     }
 }

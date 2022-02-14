@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComplexesTable extends Migration
+class AddGovernorateIdToCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateComplexesTable extends Migration
      */
     public function up()
     {
-        Schema::create('complexes', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('city_id');
+        Schema::table('cities', function (Blueprint $table) {
             $table->unsignedBigInteger('governorate_id');
-            $table->string('name');
-            $table->timestamps();
+
+            $table->foreign('governorate_id')->references('id')->on('governorates')->onDelete('cascade');
         });
     }
 
@@ -30,6 +27,8 @@ class CreateComplexesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('complexes');
+        Schema::table('cities', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ComplexController;
+use App\Http\Controllers\GovernorateController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -62,6 +63,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/{city}', [CityController::class, 'destroy'])->name('city.destroy');
     });
 
+    Route::prefix('governorates')->group(function () {
+        Route::get('/', [GovernorateController::class, 'index'])->name('governorates');
+        Route::get('/create', [GovernorateController::class, 'create'])->name('governorate.create');
+        Route::post('/', [GovernorateController::class, 'store'])->name('governorate.store');
+        Route::get('/{governorate}', [GovernorateController::class, 'show'])->name('governorate.show');
+        Route::get('/{governorate}/edit', [GovernorateController::class, 'edit'])->name('governorate.edit');
+        Route::post('/{governorate}', [GovernorateController::class, 'update'])->name('governorate.update');
+        Route::delete('/{governorate}', [GovernorateController::class, 'destroy'])->name('governorate.destroy');
+    });
+
     // Route::resource('cities', CityController::class);
 
     Route::prefix('complexes')->group(function () {
@@ -70,7 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/', [ComplexController::class, 'store'])->name('complex.store');
         Route::get('/{complex}', [ComplexController::class, 'show'])->name('complex.show');
         Route::get('/{complex}/edit', [ComplexController::class, 'edit'])->name('complex.edit');
-        Route::post('/{complex}', [ComplexController::class, 'update'])->name('complex.update');
+        Route::patch('/{complex}', [ComplexController::class, 'update'])->name('complex.update');
         Route::delete('/{complex}', [ComplexController::class, 'destroy'])->name('complex.destroy');
     });
 

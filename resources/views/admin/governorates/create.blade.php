@@ -8,21 +8,22 @@
             <div class="col-md-8 grid-margin stretch-card ">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create Complex</h4>
+                        <h4 class="card-title">Create Governorate</h4>
 
-                        <form class="forms-sample" method="POST" action="{{ route('complex.store') }}">
+                        <form class="forms-sample" method="POST" action="{{ route('governorate.store') }}">
                             @csrf
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Complex Name </label>
+                                <label for="exampleInputUsername1">Governorate Name </label>
                                 <input type="text" class="form-control" id="exampleInputUsername1" name="name"
-                                    placeholder="Complex Name">
+                                    placeholder="Governorate Name">
                             </div>
                             <div class="form-group">
                                 <label for="country">Country</label>
                                 <select name="country_id" class="form-select">
                                     @foreach ($countries as $country)
 
-                                        <option value="{{ $country->id }}"> {{ $country->country_name }}</option>
+                                        <option value="{{ $country->id }}"> {{ $country->country_name }}
+                                        </option>
                                     @endforeach
 
                                 </select>

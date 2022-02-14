@@ -18,5 +18,15 @@ class City extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function complexs()
+    {
+        return $this->hasMany(Complex::class);
+    }
+
     protected $dates = ['deleted_at'];
+
+    public function governorate()
+    {
+        return $this->belongsTo(Governorate::class);
+    }
 }
