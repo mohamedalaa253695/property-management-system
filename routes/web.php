@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BuildingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -73,6 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/{governorate}', [GovernorateController::class, 'destroy'])->name('governorate.destroy');
     });
 
+    Route::resource('buildings', BuildingController::class);
     // Route::resource('cities', CityController::class);
 
     Route::prefix('complexes')->group(function () {
