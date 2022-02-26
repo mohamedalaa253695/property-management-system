@@ -24,4 +24,9 @@ class Complex extends Model
     {
         return  $this->belongsTo(City::class);
     }
+
+    public function buildings()
+    {
+        return $this->hasMany(Building::class);
+    }
 }

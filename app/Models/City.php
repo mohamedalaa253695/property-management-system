@@ -24,6 +24,11 @@ class City extends Model
         return $this->hasMany(Complex::class);
     }
 
+    public function buildings()
+    {
+        return $this->hasMany(Building::class);
+    }
+
     protected $dates = ['deleted_at'];
 
     public function governorate()

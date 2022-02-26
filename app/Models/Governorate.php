@@ -18,6 +18,16 @@ class Governorate extends Model
         return $this->belongsTo(Country::class);
     }
 
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
+
+    public function complexs()
+    {
+        return $this->hasMany(Complex::class);
+    }
+
     //TODO must change the cities table as one governate has many cities
     public function cities()
     {

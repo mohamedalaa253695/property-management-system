@@ -5,6 +5,7 @@ use App\Models\Building;
 use App\Models\City;
 use App\Models\Complex;
 use App\Models\Country;
+use App\Models\Governorate;
 use Illuminate\Http\Request;
 
 class BuildingController extends Controller
@@ -30,7 +31,13 @@ class BuildingController extends Controller
         $countries = Country::all();
         $cities = City::all();
         $complexes = Complex::all();
-        return view('admin.buildings.create', ['countries' => $countries, 'cities' => $cities, 'complexes' => $complexes]);
+        $governorates = Governorate::all();
+        return view('admin.buildings.create', [
+            'countries' => $countries,
+            'cities' => $cities,
+            'complexes' => $complexes,
+            'governorates' => $governorates
+        ]);
     }
 
     /**
@@ -82,7 +89,13 @@ class BuildingController extends Controller
         $countries = Country::all();
         $cities = City::all();
         $complexes = Complex::all();
-        return view('admin.buildings.edit', ['building' => $building, 'countries' => $countries, 'cities' => $cities, 'complexes' => $complexes]);
+        $governorates = Governorate::all();
+
+        return view('admin.buildings.edit', [
+            'countries' => $countries,
+            'governorates' => $governorates,
+            'cities' => $cities,
+            'complexes' => $complexes]);
     }
 
     /**

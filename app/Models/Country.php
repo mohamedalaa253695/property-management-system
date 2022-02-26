@@ -19,8 +19,23 @@ class Country extends Model
         return $this->hasMany(City::class);
     }
 
+    public function complexs()
+    {
+        return $this->hasMany(Complex::class);
+    }
+
+    public function properties()
+    {
+        return $this->hasMany(Property::class);
+    }
+
     public function governorates()
     {
         return $this->hasMany(Governorate::class);
+    }
+
+    public function buildings()
+    {
+        return $this->hasMany(Building::class);
     }
 }

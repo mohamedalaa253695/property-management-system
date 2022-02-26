@@ -19,11 +19,15 @@
                     <li class="nav-item"> <a class="nav-link"
                             href="{{ route('countries') }}">Countries</a>
                     </li>
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('governorates') }}">governorates</a>
+                    </li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('cities') }}">Cities</a></li>
                     <li class="nav-item"> <a class="nav-link"
-                            href="{{ route('governorates') }}">governorates</a></li>
-                    <li class="nav-item"> <a class="nav-link"
                             href="{{ route('complexes') }}">Complexes</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('buildings.index') }}">buildings</a>
                     </li>
                     <li class="nav-item"> <a class="nav-link"
                             href="{{ route('properties') }}">Properties</a></li>

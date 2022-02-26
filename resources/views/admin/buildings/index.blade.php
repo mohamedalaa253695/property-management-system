@@ -3,8 +3,8 @@
 @section('main')
 
     <div class="row">
-        <a class="w-auto" href="{{ route('complex.create') }}">
-            <button type="button" class="btn btn-primary mb-3">Add Complex</button>
+        <a class="w-auto" href="{{ route('buildings.create') }}">
+            <button type="button" class="btn btn-primary mb-3">Add Building</button>
         </a>
     </div>
     <div class="card">
@@ -15,23 +15,23 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Complex</th>
+                            <th>Building</th>
                             <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (isset($properties))
-                            @foreach ($properties as $properties)
+                        @if (isset($buildings))
+                            @foreach ($buildings as $building)
                                 <tr>
-                                    <td>{{ $complex['name'] }}</td>
+                                    <td>{{ $building['number'] }}</td>
                                     <td>
                                         <div class="d-flex">
 
-                                            <a href="{{ route('complex.edit', ['complex' => $complex->id]) }}">
+                                            <a href="{{ route('buildings.edit', ['building' => $building->id]) }}">
                                                 <label class=" badge badge-warning">edit</label>
                                             </a>
                                             <form method="POST"
-                                                action="{{ route('complex.destroy', ['complex' => $complex->id]) }}">
+                                                action="{{ route('buildings.destroy', ['building' => $building->id]) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="badge badge-danger">delete</button>
