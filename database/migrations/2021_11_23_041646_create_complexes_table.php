@@ -16,8 +16,8 @@ class CreateComplexesTable extends Migration
         Schema::create('complexes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('city_id');
             $table->unsignedBigInteger('governorate_id');
+            $table->unsignedBigInteger('city_id');
             $table->string('name');
             $table->timestamps();
         });

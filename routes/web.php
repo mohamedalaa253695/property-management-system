@@ -50,8 +50,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/store', [PropertyController::class, 'store'])->name('property.store');
         Route::get('/{property}', [PropertyController::class, 'show'])->name('property.show');
         Route::get('/{property}/edit', [PropertyController::class, 'edit'])->name('property.edit');
-        Route::post('/{property}', [PropertyController::class, 'update'])->name('property.update');
+        Route::patch('/{property}', [PropertyController::class, 'update'])->name('property.update');
         Route::delete('/{property}', [PropertyController::class, 'destroy'])->name('property.destroy');
+        Route::delete('/', [PropertyController::class, 'bulkDelete'])->name('property.bulkDelete');
     });
 
     Route::prefix('cities')->group(function () {

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterTablePropertiesAddForeignKeys extends Migration
+class AlterTableCitiesAddForeignKeys extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class AlterTablePropertiesAddForeignKeys extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('properties', function (Blueprint $table) {
-            $table->foreign('property_types_id')->references('id')->on('property_types');
-            $table->foreign('city_id')->references('id')->on('cities');
-            $table->foreign('property_status_id')->references('id')->on('property_status');
+        Schema::table('cities', function (Blueprint $table) {
+            $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('governorate_id')->references('id')->on('governorates');
         });
     }
@@ -32,14 +29,3 @@ class AlterTablePropertiesAddForeignKeys extends Migration
         //
     }
 }
-
-
-
-
-
-
-
-
-
-
-
