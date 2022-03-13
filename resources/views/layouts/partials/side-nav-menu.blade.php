@@ -6,7 +6,7 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-        <li class="nav-item nav-category">UI Elements</li>
+        <li class="nav-item nav-category">Properties</li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href=" #ui-basic" aria-expanded="false"
                 aria-controls="ui-basic">
@@ -34,34 +34,7 @@
                 </ul>
             </div>
         </li>
-        {{-- <li class="nav-item"
-        <a class="nav-link" data-bs-toggle="collapse"  href=" #ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <i class="menu-icon mdi mdi-floor-plan"></i>
-          <span class="menu-title">UI Elements</span>
-          <i class="menu-arrow"></i> 
-        </a>
-        <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link"  href="#">Buttons</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Dropdowns</a></li>
-            <li class="nav-item"> <a class="nav-link"  href="#">Typography</a></li>
-          </ul>
-        </div>
-      </li> --}}
-        <li class="nav-item nav-category">Forms and Datas</li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href=" #form-elements" aria-expanded="false"
-                aria-controls="form-elements">
-                <i class="menu-icon mdi mdi-card-text-outline"></i>
-                <span class="menu-title">Form elements</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="form-elements">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="#">Basic Elements</a></li>
-                </ul>
-            </div>
-        </li>
+        <li class="nav-item nav-category">Users</li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href=" #charts" aria-expanded="false"
                 aria-controls="charts">
@@ -79,51 +52,26 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item nav-category">Invoices</li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false"
-                aria-controls="tables">
-                <i class="menu-icon mdi mdi-table"></i>
-                <span class="menu-title">Tables</span>
+            <a class="nav-link" data-bs-toggle="collapse" href=" #form-elements" aria-expanded="false"
+                aria-controls="form-elements">
+                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                <span class="menu-title">Invoices</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="tables">
+            <div class="collapse" id="form-elements">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#">Basic table</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Basic Elements</a></li>
                 </ul>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#icons" aria-expanded="false"
-                aria-controls="icons">
-                <i class="menu-icon mdi mdi-layers-outline"></i>
-                <span class="menu-title">Icons</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="icons">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#">Mdi icons</a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item nav-category">pages</li>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href=" #auth" aria-expanded="false"
-                aria-controls="auth">
-                <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                <span class="menu-title">User Pages</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="auth">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href=""> Login </a></li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item nav-category">help</li>
+
+        <li class="nav-item nav-category">Reports</li>
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <i class="menu-icon mdi mdi-file-document"></i>
-                <span class="menu-title">Documentation</span>
+                <span class="menu-title">Reports</span>
             </a>
         </li>
     </ul>

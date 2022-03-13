@@ -54,6 +54,9 @@ class UserController extends Controller
         $user->name = $request->username;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->is_admin = $request->input('role') == 'admin' ? true : false;
+        $user->is_agent = $request->input('role') == 'agent' ? true : false;
+        $user->is_customer = $request->input('role') == 'customer' ? true : false;
         $user->save();
         //dd($user);
         return redirect('/users')->with('message', 'User Created successfully');

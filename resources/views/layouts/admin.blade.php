@@ -16,44 +16,46 @@
 
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" type="text/css"
-        href="{{ asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/js/select.dataTables.min.css') }}">
+    <link rel="stylesheet" type="text/css" {{-- href="{{ asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}"> --}} <link rel="stylesheet"
+        href="{{ asset('assets/js/select.dataTables.min.css') }}">
     <!-- End plugin css for this page -->
 
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('assets/css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 </head>
 
 <body>
-    <div class="container-scroller">
-        <!-- partial:partials/_navbar.html -->
-        @include('layouts.partials.header')
-        <!-- partial -->
-        <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_settings-panel.html -->
-            @include('layouts.partials.theme-setting')
-            {{-- setting panel if needed --}}
+    <div id="app">
+        <div class="container-scroller">
+            <!-- partial:partials/_navbar.html -->
+            @include('layouts.partials.header')
             <!-- partial -->
-            <!-- partial:partials/_sidebar.html -->
-            @include('layouts.partials.side-nav-menu')
-            <!-- partial -->
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    <div class="row">
-                        @yield('main')
-                    </div>
-                </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
-                @include('layouts.partials.footer')
+            <div class="container-fluid page-body-wrapper">
+                <!-- partial:partials/_settings-panel.html -->
+                @include('layouts.partials.theme-setting')
+                {{-- setting panel if needed --}}
                 <!-- partial -->
+                <!-- partial:partials/_sidebar.html -->
+                @include('layouts.partials.side-nav-menu')
+                <!-- partial -->
+                <div class="main-panel">
+                    <div class="content-wrapper">
+                        <div class="row">
+                            @yield('main')
+                        </div>
+                    </div>
+                    <!-- content-wrapper ends -->
+                    <!-- partial:partials/_footer.html -->
+                    @include('layouts.partials.footer')
+                    <!-- partial -->
+                </div>
+                <!-- main-panel ends -->
             </div>
-            <!-- main-panel ends -->
+            <!-- page-body-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
 
@@ -78,6 +80,7 @@
     <!-- Custom js for this page-->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <script src="{{ asset('assets/js/Chart.roundedBarCharts.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <!-- End custom js for this page-->
 </body>
 

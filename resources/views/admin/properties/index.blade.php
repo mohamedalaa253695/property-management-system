@@ -16,8 +16,6 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton2" style="">
                     <input type="submit" value="delete" class="dropdown-item">
-
-
                 </div>
             </div>
 
