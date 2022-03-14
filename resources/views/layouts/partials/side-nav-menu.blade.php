@@ -31,6 +31,8 @@
                     </li>
                     <li class="nav-item"> <a class="nav-link"
                             href="{{ route('properties') }}">Properties</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('statuses') }}">Property
+                            Status</a></li>
                 </ul>
             </div>
         </li>

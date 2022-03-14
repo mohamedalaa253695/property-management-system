@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             UserSeeder::class,
             ComplexSeeder::class,
+            PropertyStatusSeeder::class,
             PropertySeeder::class
 
         ]);

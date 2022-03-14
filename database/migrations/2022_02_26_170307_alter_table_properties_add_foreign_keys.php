@@ -22,6 +22,7 @@ class AlterTablePropertiesAddForeignKeys extends Migration
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('complex_id')->references('id')->on('complexes');
             $table->foreign('building_id')->references('id')->on('buildings');
+            $table->foreign('status_id')->references('id')->on('property_statuses')->onDelete('cascade');
         });
     }
 

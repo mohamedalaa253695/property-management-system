@@ -9,6 +9,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ComplexController;
 use App\Http\Controllers\GovernorateController;
+use App\Http\Controllers\PropertyStatusController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -95,5 +96,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/edit/{id}', [CountryController::class, 'edit'])->name('country.edit');
         Route::post('/update/{id}', [CountryController::class, 'update'])->name('country.update');
         Route::delete('/destroy/{id}', [CountryController::class, 'destroy'])->name('country.destroy');
+    });
+
+    Route::prefix('statuses')->group(function () {
+        Route::get('/', [PropertyStatusController::class, 'index'])->name('statuses');
+        Route::get('/create', [PropertyStatusController::class, 'create'])->name('status.create');
+        Route::post('/', [PropertyStatusController::class, 'store'])->name('status.store');
+        // Route::get('/{status}', [PropertyStatusController::class, 'show'])->name('status.show');
+        Route::get('/{status}/edit', [PropertyStatusController::class, 'edit'])->name('status.edit');
+        Route::patch('/{status}', [PropertyStatusController::class, 'update'])->name('status.update');
+        Route::delete('/{status}', [PropertyStatusController::class, 'destroy'])->name('status.destroy');
     });
 });

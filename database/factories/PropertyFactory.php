@@ -6,6 +6,7 @@ use App\Models\Complex;
 use App\Models\Country;
 use App\Models\Building;
 use App\Models\Governorate;
+use App\Models\PropertyStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PropertyFactory extends Factory
@@ -24,6 +25,9 @@ class PropertyFactory extends Factory
             'city_id' => City::factory(),
             'complex_id' => Complex::factory(),
             'building_id' => Building::factory(),
+            'status_id' => PropertyStatus::factory(),
+            'price' => $this->faker->numberBetween(100000, 200000),
+
         ];
     }
 }
