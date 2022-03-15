@@ -7,7 +7,7 @@ use App\Models\Country;
 use App\Models\Building;
 use App\Models\Property;
 use App\Models\Governorate;
-use Illuminate\Support\Str;
+use App\Models\PropertyStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,12 +36,14 @@ class PropertyController extends Controller
         $complexes = Complex::all();
         $governorates = Governorate::all();
         $buildings = Building::all();
+        $statuses = PropertyStatus::all();
         return view('admin.properties.create', [
             'countries' => $countries,
             'cities' => $cities,
             'complexes' => $complexes,
             'governorates' => $governorates,
-            'buildings' => $buildings
+            'buildings' => $buildings,
+            'statuses' => $statuses
         ]);
     }
 
@@ -54,11 +56,8 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $file = $request->file('image');
-        // dd($file);
-        // $name = Str::random(10);
         $image_url = $file->store('public/images');
         $image_url = str_replace('public/images/', '', $image_url);
-        // dd($image_name);
 
         // // $complete_url = env('APP_URL') . '/' . $image_url;
         $request->validate([
@@ -73,13 +72,22 @@ class PropertyController extends Controller
         ]);
 
         Property::create([
-            'image' => $image_url,
             'number' => $request->input('number'),
             'country_id' => $request->input('country_id'),
             'governorate_id' => $request->input('governorate_id'),
             'city_id' => $request->input('city_id'),
             'complex_id' => $request->input('complex_id'),
             'building_id' => $request->input('building_id'),
+            'status_id' => $request->input('status_id'),
+            'number_of_bedrooms' => $request->input('number_of_bedrooms'),
+            'number_of_bathrooms' => $request->input('number_of_bathrooms'),
+            'number_of_balconies' => $request->input('number_of_balconies'),
+            'balconies_space' => $request->input('balconies_space'),
+            'total_space' => $request->input('total_space'),
+            'property_description' => $request->input('property_description'),
+            'price' => $request->input('price'),
+            'image' => $image_url,
+
         ]);
         return redirect('/properties');
     }
@@ -109,6 +117,7 @@ class PropertyController extends Controller
         $complexes = Complex::all();
         $governorates = Governorate::all();
         $buildings = Building::all();
+        $statuses = PropertyStatus::all();
 
         return view('admin.properties.edit', [
             'property' => $property,
@@ -116,7 +125,8 @@ class PropertyController extends Controller
             'countries' => $countries,
             'governorates' => $governorates,
             'cities' => $cities,
-            'complexes' => $complexes
+            'complexes' => $complexes,
+            'statuses' => $statuses
         ]);
     }
 
@@ -133,13 +143,28 @@ class PropertyController extends Controller
         $request->validate([
             'number' => 'required',
         ]);
+        if ($request->input('image') != null) {
+            $file = $request->file('image');
+            $image_url = $file->store('public/images');
+            $image_url = str_replace('public/images/', '', $image_url);
+        }
 
+        // dd(request()->input('image'), $property->image);
         $property->update([
             'number' => $request->input('number'),
             'country_id' => $request->input('country_id'),
             'city_id' => $request->input('city_id'),
             'complex_id' => $request->input('complex_id'),
             'building_id' => $request->input('building_id'),
+            'status_id' => $request->input('status_id'),
+            'number_of_bedrooms' => $request->input('number_of_bedrooms'),
+            'number_of_bathrooms' => $request->input('number_of_bathrooms'),
+            'number_of_balconies' => $request->input('number_of_balconies'),
+            'balconies_space' => $request->input('balconies_space'),
+            'total_space' => $request->input('total_space'),
+            'property_description' => $request->input('property_description'),
+            'price' => $request->input('price'),
+            'image' => $request->input('image') == null ? $property->image : $image_url,
 
         ]);
         // dd($request->input('number'));

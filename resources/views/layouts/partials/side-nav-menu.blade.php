@@ -2,7 +2,7 @@
     <ul class="nav">
         <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}">
-                <i class="mdi mdi-grid-large menu-icon"></i>
+                <i class="menu-icon mdi mdi-chart-bar"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
@@ -37,10 +37,17 @@
             </div>
         </li>
         <li class="nav-item nav-category">Users</li>
+
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('users') }}">
+                <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                <span class="menu-title">Users</span>
+            </a>
+        </li>
+        {{-- <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href=" #charts" aria-expanded="false"
                 aria-controls="charts">
-                <i class="menu-icon mdi mdi-chart-line"></i>
+                <i class="menu-icon mdi mdi-account-circle-outline"></i>
                 <span class="menu-title">Users</span>
                 <i class="menu-arrow"></i>
             </a>
@@ -53,21 +60,16 @@
                     </li>
                 </ul>
             </div>
-        </li>
+        </li> --}}
         <li class="nav-item nav-category">Invoices</li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href=" #form-elements" aria-expanded="false"
-                aria-controls="form-elements">
+            <a class="nav-link" href="{{ route('invoices') }}">
                 <i class="menu-icon mdi mdi-card-text-outline"></i>
                 <span class="menu-title">Invoices</span>
-                <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="form-elements">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="#">Basic Elements</a></li>
-                </ul>
-            </div>
         </li>
+
+
 
         <li class="nav-item nav-category">Reports</li>
         <li class="nav-item">

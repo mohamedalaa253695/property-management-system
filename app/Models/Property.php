@@ -34,4 +34,9 @@ class Property extends Model
     {
         return $this->belongsTo(Building::class);
     }
+
+    public function status()
+    {
+        return $this->belongsTo(PropertyStatus::class);
+    }
 }
