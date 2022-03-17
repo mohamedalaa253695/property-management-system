@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ComplexSeeder::class,
             PropertyStatusSeeder::class,
-            PropertySeeder::class
+            PropertySeeder::class,
+            InvoiceSeeder::class
 
         ]);
     }

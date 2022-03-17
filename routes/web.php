@@ -9,6 +9,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ComplexController;
 use App\Http\Controllers\GovernorateController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PropertyStatusController;
 use Illuminate\Support\Facades\Auth;
 
@@ -106,5 +107,14 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/{status}/edit', [PropertyStatusController::class, 'edit'])->name('status.edit');
         Route::patch('/{status}', [PropertyStatusController::class, 'update'])->name('status.update');
         Route::delete('/{status}', [PropertyStatusController::class, 'destroy'])->name('status.destroy');
+    });
+    Route::prefix('invoices')->group(function () {
+        Route::get('/', [InvoiceController::class, 'index'])->name('invoices');
+        Route::get('/create', [InvoiceController::class, 'create'])->name('invoice.create');
+        Route::post('/', [InvoiceController::class, 'store'])->name('invoice.store');
+        Route::get('/{invoice}/edit', [InvoiceController::class, 'edit'])->name('invoice.edit');
+        Route::patch('/{invoice}', [InvoiceController::class, 'update'])->name('invoice.update');
+        Route::delete('/{invoice}', [InvoiceController::class, 'destroy'])->name('invoice.destroy');
+        Route::get('/{invoice}/export', [InvoiceController::class, 'export'])->name('invoice.export');
     });
 });
