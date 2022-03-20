@@ -82,6 +82,9 @@
     <script src="{{ asset('assets/js/Chart.roundedBarCharts.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- End custom js for this page-->
+
+
+    @yield('javascript')
 </body>
 
 </html>

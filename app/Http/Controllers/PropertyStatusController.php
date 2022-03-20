@@ -15,7 +15,8 @@ class PropertyStatusController extends Controller
     {
         //
         $statuses = PropertyStatus::all();
-        return view('admin.property_status.index', ['statuses' => $statuses]) ;
+        return response()->json($statuses, 200);
+        // return view('admin.property_status.index', ['statuses' => $statuses]) ;
     }
 
     /**

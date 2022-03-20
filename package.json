@@ -27,6 +27,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "cypress": "^7.3.0"
+        "cypress": "^7.3.0",
+        "vue-html2pdf": "^1.8.0",
+        "vue2-datepicker": "^3.10.4"
     }
 }

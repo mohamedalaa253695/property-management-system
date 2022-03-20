@@ -11,6 +11,7 @@ use App\Http\Controllers\ComplexController;
 use App\Http\Controllers\GovernorateController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\PropertyStatusController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -116,5 +117,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/{invoice}', [InvoiceController::class, 'update'])->name('invoice.update');
         Route::delete('/{invoice}', [InvoiceController::class, 'destroy'])->name('invoice.destroy');
         Route::get('/{invoice}/export', [InvoiceController::class, 'export'])->name('invoice.export');
+    });
+
+    Route::prefix('reports')->group(function () {
+        Route::get('/', [ReportController::class, 'index'])->name('reports');
+        Route::post('/search', [ReportController::class, 'search'])->name('reports.search');
+        Route::post('/exportPDF', [ReportController::class, 'exportPDF'])->name('reports.exportPDF');
     });
 });

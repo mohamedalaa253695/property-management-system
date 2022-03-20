@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
   'use strict';
   if ($("#timepicker-example").length) {
     $('#timepicker-example').datetimepicker({
@@ -28,8 +28,8 @@
   if ($('input[name="date-range"]').length) {
     $('input[name="date-range"]').daterangepicker();
   }
-  if($('.input-daterange').length) {
-    $('.input-daterange input').each(function() {
+  if ($('.input-daterange').length) {
+    $('.input-daterange input').each(function () {
       $(this).datepicker('clearDates');
     });
     $('.input-daterange').datepicker({});

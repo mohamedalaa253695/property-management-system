@@ -44,23 +44,7 @@
                 <span class="menu-title">Users</span>
             </a>
         </li>
-        {{-- <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href=" #charts" aria-expanded="false"
-                aria-controls="charts">
-                <i class="menu-icon mdi mdi-account-circle-outline"></i>
-                <span class="menu-title">Users</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="charts">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('users') }}">all</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('users') }}">admins</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('users') }}">agents</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('users') }}">customers</a>
-                    </li>
-                </ul>
-            </div>
-        </li> --}}
+
         <li class="nav-item nav-category">Invoices</li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('invoices') }}">
@@ -73,7 +57,7 @@
 
         <li class="nav-item nav-category">Reports</li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('reports') }}">
                 <i class="menu-icon mdi mdi-file-document"></i>
                 <span class="menu-title">Reports</span>
             </a>
