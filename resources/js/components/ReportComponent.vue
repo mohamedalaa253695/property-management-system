@@ -155,9 +155,8 @@ export default {
     },
    async  mounted(){
         
-            const {data} = await axios.get('/statuses');
-            this.statuses = data;
-            // console.log(this.statuses);      
+            const {data} = await axios.get('/statuses/json');
+            this.statuses = data;    
 
     }
 

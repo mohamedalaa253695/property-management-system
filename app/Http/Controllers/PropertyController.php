@@ -7,8 +7,9 @@ use App\Models\Country;
 use App\Models\Building;
 use App\Models\Property;
 use App\Models\Governorate;
-use App\Models\PropertyStatus;
 use Illuminate\Http\Request;
+use App\Models\PropertyStatus;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PropertyController extends Controller
@@ -191,5 +192,28 @@ class PropertyController extends Controller
             Property::destroy($id);
         }
         return redirect('/properties');
+    }
+
+    public function search(Request $request)
+    {
+        // dd($request->input('property_number'));
+        $properties = DB::table('properties')
+                                    ->join('countries', 'properties.country_id', '=', 'countries.id')
+                                    ->join('governorates', 'properties.governorate_id', '=', 'governorates.id')
+                                    ->join('cities', 'properties.city_id', '=', 'cities.id')
+                                    ->join('complexes', 'properties.complex_id', '=', 'complexes.id')
+                                    ->join('buildings', 'properties.building_id', '=', 'buildings.id')
+                                    ->where('properties.number', $request->input('property_number'))
+                                    ->select(
+                                        'properties.number as property_number',
+                                        'properties.id as id',
+                                        'countries.country_name as country_name',
+                                        'governorates.name as governorate_name',
+                                        'cities.name as city_name',
+                                        'complexes.name as complex_name',
+                                        'buildings.number as building_number'
+                                    )
+                                    ->get();
+        return response()->json($properties);
     }
 }

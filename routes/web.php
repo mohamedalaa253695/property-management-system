@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::prefix('properties')->group(function () {
         Route::get('/', [PropertyController::class, 'index'])->name('properties');
         Route::get('/create', [PropertyController::class, 'create'])->name('property.create');
+        Route::get('/search', [PropertyController::class, 'search'])->name('property.search');
         Route::post('/store', [PropertyController::class, 'store'])->name('property.store');
         Route::get('/{property}', [PropertyController::class, 'show'])->name('property.show');
         Route::get('/{property}/edit', [PropertyController::class, 'edit'])->name('property.edit');
@@ -57,7 +58,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/{property}', [PropertyController::class, 'destroy'])->name('property.destroy');
         Route::delete('/', [PropertyController::class, 'bulkDelete'])->name('property.bulkDelete');
     });
-
     Route::prefix('cities')->group(function () {
         Route::get('/', [CityController::class, 'index'])->name('cities');
         Route::get('/create', [CityController::class, 'create'])->name('city.create');
@@ -102,6 +102,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('statuses')->group(function () {
         Route::get('/', [PropertyStatusController::class, 'index'])->name('statuses');
+        Route::get('/json', [PropertyStatusController::class, 'getStatusesAsJson'])->name('getStatusesAsJson');
         Route::get('/create', [PropertyStatusController::class, 'create'])->name('status.create');
         Route::post('/', [PropertyStatusController::class, 'store'])->name('status.store');
         // Route::get('/{status}', [PropertyStatusController::class, 'show'])->name('status.show');

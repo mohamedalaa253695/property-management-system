@@ -15,8 +15,8 @@ class PropertyStatusController extends Controller
     {
         //
         $statuses = PropertyStatus::all();
-        return response()->json($statuses, 200);
-        // return view('admin.property_status.index', ['statuses' => $statuses]) ;
+
+        return view('admin.property_status.index', ['statuses' => $statuses]) ;
     }
 
     /**
@@ -99,5 +99,11 @@ class PropertyStatusController extends Controller
     {
         PropertyStatus::destroy($status->id);
         return redirect('/statuses');
+    }
+
+    public function getStatusesAsJson()
+    {
+        $statuses = PropertyStatus::all();
+        return response()->json($statuses, 200);
     }
 }

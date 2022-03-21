@@ -22,6 +22,7 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('search-properties', require('./components/SearchProperties.vue').default);
 Vue.component('report-component', require('./components/ReportComponent.vue').default);
+Vue.component('invoice-card', require('./components/InvoiceCard.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

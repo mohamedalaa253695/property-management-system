@@ -3,9 +3,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use LaravelDaily\Invoices\Classes\Buyer;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 use LaravelDaily\Invoices\Invoice as InvoiceDaily;
+use Symfony\Component\HttpFoundation\Response;
 
 class InvoiceController extends Controller
 {
@@ -39,7 +41,23 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        Invoice::create([
+            'property_id' => $request->input('property_id'),
+            'invoice_number' => $request->input('invoice_number'),
+            'description' => 'invoice description',
+            'qty' => 1,
+            'price' => $request->input('price'),
+            'total' => $request->input('price'),
+            'issue_date' => Carbon::now(),
+            'due_date' => Carbon::now()->add(3, 'day'),
+            'customer_name' => $request->input('customer_name'),
+            'customer_email' => $request->input('customer_email'),
+            'customer_address' => $request->input('customer_address'),
+            'customer_phone' => $request->input('customer_phone'),
+
+        ]);
+        return response(url('/invoices'), Response::HTTP_CREATED);
     }
 
     /**
@@ -84,7 +102,8 @@ class InvoiceController extends Controller
      */
     public function destroy(Invoice $invoice)
     {
-        //
+        Invoice::destroy($invoice->id);
+        return redirect('invoices');
     }
 
     public function export(Invoice $invoice)
