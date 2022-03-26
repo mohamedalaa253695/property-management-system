@@ -1,18 +1,18 @@
 <?php
 
-use App\Http\Controllers\BuildingController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\CountryController;
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\ComplexController;
-use App\Http\Controllers\GovernorateController;
-use App\Http\Controllers\InvoiceController;
-use App\Http\Controllers\PropertyStatusController;
-use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ComplexController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\BuildingController;
+use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GovernorateController;
+use App\Http\Controllers\PropertyStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,17 +25,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home','HomeController@index')->name('home');
-
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get(('/'), function () {
+        return redirect('/dashboard');
+    });
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('users');
@@ -109,6 +105,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/{status}/edit', [PropertyStatusController::class, 'edit'])->name('status.edit');
         Route::patch('/{status}', [PropertyStatusController::class, 'update'])->name('status.update');
         Route::delete('/{status}', [PropertyStatusController::class, 'destroy'])->name('status.destroy');
+        Route::delete('/', [PropertyStatusController::class, 'bulkDelete'])->name('status.bulkDelete');
     });
     Route::prefix('invoices')->group(function () {
         Route::get('/', [InvoiceController::class, 'index'])->name('invoices');

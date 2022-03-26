@@ -23,6 +23,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('search-properties', require('./components/SearchProperties.vue').default);
 Vue.component('report-component', require('./components/ReportComponent.vue').default);
 Vue.component('invoice-card', require('./components/InvoiceCard.vue').default);
+Vue.component('line-chart', require('./components/LineChart.vue').default);
+Vue.component('bar-chart', require('./components/BarChart.vue').default);
+Vue.component('area-chart', require('./components/AreaChart.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
