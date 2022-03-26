@@ -101,6 +101,16 @@ class PropertyStatusController extends Controller
         return redirect('/statuses');
     }
 
+    public function bulkDelete(Request $request)
+    {
+        // dd($request->input('ids'));
+        $ids = $request->input('ids');
+        foreach ($ids as $id) {
+            PropertyStatus::destroy($id);
+        }
+        return redirect('/statuses');
+    }
+
     public function getStatusesAsJson()
     {
         $statuses = PropertyStatus::all();

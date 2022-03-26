@@ -14,14 +14,7 @@
             </a>
         </div>
     </div>
-    {{-- header good morning  select cat date picker  to --- profile dropdown --}}
     <div class="navbar-menu-wrapper d-flex align-items-top">
-        {{-- <ul class="navbar-nav">
-            <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
-                <h3 class="welcome-sub-text">Your performance summary this week </h3>
-            </li>
-        </ul> --}}
         <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown d-none d-lg-block">
                 <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown"
@@ -40,25 +33,18 @@
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Create User </p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="{{ url('invoices/create') }}">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Create Invoice</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="{{ url('/reports') }}">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">Generate Report</p>
                         </div>
                     </a>
                 </div>
             </li>
-
-            {{-- <li class="nav-item">
-                <form class="search-form" action="#">
-                    <i class="icon-search"></i>
-                    <input type="search" class="form-control" placeholder="Search Here" title="Search here">
-                </form>
-            </li> --}}
 
 
             <li class="nav-item dropdown d-none d-lg-block user-dropdown">

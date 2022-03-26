@@ -44,6 +44,7 @@
 
                     </tbody>
                 </table>
+                {{ $countries->onEachSide(1)->links() }}
             </div>
         </div>
     </div>

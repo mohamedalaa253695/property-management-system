@@ -78,6 +78,7 @@
 
                     </tbody>
                 </table>
+                {{ $users->onEachSide(1)->links() }}
             </div>
         </div>
     </div>

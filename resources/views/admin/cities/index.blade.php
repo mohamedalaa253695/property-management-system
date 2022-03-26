@@ -44,6 +44,7 @@
 
                     </tbody>
                 </table>
+                {{ $cities->onEachSide(1)->links() }}
             </div>
         </div>
     </div>

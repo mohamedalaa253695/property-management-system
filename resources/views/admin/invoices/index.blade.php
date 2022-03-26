@@ -60,6 +60,7 @@
 
                     </tbody>
                 </table>
+                {{ $invoices->onEachSide(1)->links() }}
             </div>
         </div>
     </div>

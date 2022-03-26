@@ -22,7 +22,6 @@
                     <tbody>
                         @if (isset($complexes))
                             @foreach ($complexes as $complex)
-
                                 <tr>
                                     <td>{{ $complex['name'] }}</td>
                                     <td>
@@ -38,16 +37,15 @@
                                                 <button type="submit" class="badge badge-danger">delete</button>
 
                                             </form>
-
                                         </div>
                                     </td>
                                 </tr>
-
                             @endforeach
                         @endif
 
                     </tbody>
                 </table>
+                {{ $complexes->onEachSide(1)->links() }}
             </div>
         </div>
     </div>

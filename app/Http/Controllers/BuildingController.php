@@ -92,6 +92,7 @@ class BuildingController extends Controller
         $governorates = Governorate::all();
 
         return view('admin.buildings.edit', [
+            'building' => $building,
             'countries' => $countries,
             'governorates' => $governorates,
             'cities' => $cities,

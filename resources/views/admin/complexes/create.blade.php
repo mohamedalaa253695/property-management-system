@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('main')
-
     <div class="content-wrapper ">
         <div class="row justify-content-center ">
 
@@ -9,6 +8,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Create Complex</h4>
+                        @if (isset($errors))
+                            @foreach ($errors as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        @endif
 
                         <form class="forms-sample" method="POST" action="{{ route('complex.store') }}">
                             @csrf
@@ -21,8 +25,16 @@
                                 <label for="country">Country</label>
                                 <select name="country_id" class="form-select">
                                     @foreach ($countries as $country)
-
                                         <option value="{{ $country->id }}"> {{ $country->country_name }}</option>
+                                    @endforeach
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="governorate">Governorate</label>
+                                <select name="governorate_id" class="form-select">
+                                    @foreach ($governorates as $governorate)
+                                        <option value="{{ $governorate->id }}"> {{ $governorate->name }}</option>
                                     @endforeach
 
                                 </select>
@@ -31,7 +43,6 @@
                                 <label for="city">City</label>
                                 <select name="city_id" class="form-select">
                                     @foreach ($cities as $city)
-
                                         <option value="{{ $city->id }}"> {{ $city->name }}</option>
                                     @endforeach
 
@@ -47,6 +58,4 @@
         </div>
 
     </div>
-
-
 @endsection

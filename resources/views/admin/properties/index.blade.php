@@ -29,13 +29,14 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Property number</th>
                                 <th>Property image</th>
+                                <th>status</th>
+                                <th>Property number</th>
                                 <th>building</th>
                                 <th>complex</th>
-                                <th>city</th>
+                                {{-- <th>city</th>
                                 <th>governorate</th>
-                                <th>country</th>
+                                <th>country</th> --}}
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -58,12 +59,13 @@
                                             </td>
                                         @endif
 
+                                        <td>{{ $property->status->name }}</td>
                                         <td>{{ $property['number'] }}</td>
                                         <td>{{ $property->building->number }}</td>
                                         <td>{{ $property->complex->name }}</td>
-                                        <td>{{ $property->city->name }}</td>
+                                        {{-- <td>{{ $property->city->name }}</td>
                                         <td>{{ $property->governorate->name }}</td>
-                                        <td>{{ $property->country->country_name }}</td>
+                                        <td>{{ $property->country->country_name }}</td> --}}
                                         <td>
                                             <div class="d-flex">
 
@@ -85,6 +87,7 @@
 
                         </tbody>
                     </table>
+                    {{ $properties->onEachSide(1)->links() }}
                 </div>
             </div>
         </div>

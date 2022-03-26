@@ -34,11 +34,6 @@
             @include('layouts.partials.header')
             <!-- partial -->
             <div class="container-fluid page-body-wrapper">
-                <!-- partial:partials/_settings-panel.html -->
-                @include('layouts.partials.theme-setting')
-                {{-- setting panel if needed --}}
-                <!-- partial -->
-                <!-- partial:partials/_sidebar.html -->
                 @include('layouts.partials.side-nav-menu')
                 <!-- partial -->
                 <div class="main-panel">
@@ -79,6 +74,7 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/chart.js') }}"></script>
     <script src="{{ asset('assets/js/Chart.roundedBarCharts.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- End custom js for this page-->

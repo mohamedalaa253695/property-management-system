@@ -34,13 +34,35 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="country">city</label>
+                                <label for="building">governorate</label>
+                                <select name="governorate_id" class="form-select">
+                                    <option value="{{ $building->governorate->id }}" selected>
+                                        {{ $building->governorate->name }}
+                                    </option>
+                                    @foreach ($governorates as $governorate)
+                                        <option value="{{ $governorate->id }}">{{ $governorate->name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">city</label>
                                 <select name="city_id" class="form-select">
                                     <option value="{{ $building->city->id }}" selected>
                                         {{ $building->city->name }}
                                     </option>
                                     @foreach ($cities as $city)
                                         <option value="{{ $city->id }}">{{ $city->name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="complex">complex</label>
+                                <select name="complexe_id" class="form-select">
+                                    <option value="{{ $building->complex->id }}" selected>
+                                        {{ $building->complex->name }}
+                                    </option>
+                                    @foreach ($complexes as $complex)
+                                        <option value="{{ $complex->id }}">{{ $complex->name }} </option>
                                     @endforeach
                                 </select>
                             </div>

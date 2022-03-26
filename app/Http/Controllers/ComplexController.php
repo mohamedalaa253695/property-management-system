@@ -43,8 +43,12 @@ class ComplexController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'country_id' => 'required',
+            'city_id' => 'required',
+            'governorate_id' => 'required',
         ]);
+        // dd($request->all());
 
         Complex::create($request->only('name', 'country_id', 'city_id', 'governorate_id'));
 
