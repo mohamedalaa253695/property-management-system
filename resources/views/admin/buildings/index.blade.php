@@ -44,6 +44,7 @@
 
                     </tbody>
                 </table>
+                {{ $buildings->onEachSide(1)->links() }}
             </div>
         </div>
     </div>

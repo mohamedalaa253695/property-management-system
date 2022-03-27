@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Providers;
 
 use Illuminate\Cache\RateLimiting\Limit;
@@ -18,6 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
+    public const DASHBOARD = '/dashboard';
 
     /**
      * The controller namespace for the application.

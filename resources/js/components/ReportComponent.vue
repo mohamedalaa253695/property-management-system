@@ -5,7 +5,7 @@
             <div class="col-md-8 grid-margin stretch-card ">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Create City</h4>
+                        <h4 class="card-title">Generate Report</h4>
                         <form class="forms-sample" @submit.prevent="submit">
                             
                                                                              
@@ -22,13 +22,13 @@
 
                   
                             <div class="row">
-                                <div class="form-group col-6">
-                                    <label for="from">From</label>
-                                    <date-picker  v-model="from" valueType="format"></date-picker>
+                                <div class="form-group col-6  d-flex flex-column">
+                                    <label for="from" >From</label>
+                                    <date-picker class="ml-10" v-model="from" valueType="format"></date-picker>
                                 </div>
-                                <div class="form-group col-6 d-flex">
-                                    <label for="to">To</label>
-                                    <date-picker v-model="to"   valueType="format"></date-picker>
+                                <div class="form-group col-6 d-flex flex-column">
+                                    <label for="to" style="margin-right:3px;">To</label>
+                                    <date-picker v-model="to"  valueType="format"></date-picker>
                                 </div>
 
                             </div>
