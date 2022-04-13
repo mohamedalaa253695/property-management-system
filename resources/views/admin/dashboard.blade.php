@@ -66,7 +66,7 @@
                                         <div class="card-statistic-3 p-4">
                                             <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
                                             <div class="mb-4">
-                                                <h5 class="card-title mb-0">Revenue Today</h5>
+                                                <h5 class="card-title mb-0">Total Revenue</h5>
                                             </div>
                                             <div class="row align-items-center mb-2 d-flex">
                                                 <div class="col-8">
