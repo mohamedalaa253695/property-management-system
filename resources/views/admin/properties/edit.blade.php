@@ -13,7 +13,7 @@
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         @endif
-                        <form class="forms-sample" method="POST"
+                        <form class="forms-sample" method="POST" enctype="multipart/form-data"
                             action="{{ route('property.update', ['property' => $property->id]) }}">
                             @csrf
                             @method('PATCH')

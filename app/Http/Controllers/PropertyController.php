@@ -144,13 +144,15 @@ class PropertyController extends Controller
         $request->validate([
             'number' => 'required',
         ]);
-        if ($request->input('image') != null) {
+        $image_url = '';
+        if ($request->file('image') != null) {
             $file = $request->file('image');
             $image_url = $file->store('public/images');
             $image_url = str_replace('public/images/', '', $image_url);
+            // dd($request->file('image'));
         }
 
-        // dd(request()->input('image'), $property->image);
+        // dd('image_url', $image_url);
         $property->update([
             'number' => $request->input('number'),
             'country_id' => $request->input('country_id'),
@@ -165,7 +167,7 @@ class PropertyController extends Controller
             'total_space' => $request->input('total_space'),
             'property_description' => $request->input('property_description'),
             'price' => $request->input('price'),
-            'image' => $request->input('image') == null ? $property->image : $image_url,
+            'image' => $request->file('image') == null ? $property->image : $image_url,
 
         ]);
         // dd($request->input('number'));

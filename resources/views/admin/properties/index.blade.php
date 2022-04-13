@@ -48,8 +48,7 @@
                                         <td><input type="checkbox" value="{{ $property->id }}" name="ids[]"></td>
                                         @if ($property['image'])
                                             <td>
-                                                <img src=" {{ env('APP_URL') . '/storage/images/' . $property['image'] }}"
-                                                    alt="">
+                                                <img src=" {{ '/storage/images/' . $property['image'] }}" alt="">
 
                                             </td>
                                         @else
